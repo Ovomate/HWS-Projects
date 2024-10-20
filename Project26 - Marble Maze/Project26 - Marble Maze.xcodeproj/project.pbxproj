@@ -15,10 +15,10 @@
 		F80F341A2CC2D11E00F62B91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F80F34192CC2D11E00F62B91 /* Assets.xcassets */; };
 		F80F341D2CC2D11E00F62B91 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = F80F341C2CC2D11E00F62B91 /* Base */; };
 		F80F34242CC2D37A00F62B91 /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = F80F34232CC2D37A00F62B91 /* level1.txt */; };
-		F8514C5C2CC50F500035FE00 /* starExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = F8514C5B2CC50F500035FE00 /* starExplosion.sks */; };
-		F8514C5E2CC50F570035FE00 /* finishExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = F8514C5D2CC50F570035FE00 /* finishExplosion.sks */; };
 		F8514C612CC53B3C0035FE00 /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = F8514C5F2CC53B3C0035FE00 /* level2.txt */; };
 		F8514C622CC53B3C0035FE00 /* level3.txt in Resources */ = {isa = PBXBuildFile; fileRef = F8514C602CC53B3C0035FE00 /* level3.txt */; };
+		F8514C652CC578160035FE00 /* starExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = F8514C632CC578160035FE00 /* starExplosion.sks */; };
+		F8514C662CC578160035FE00 /* finishExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = F8514C642CC578160035FE00 /* finishExplosion.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,10 +31,10 @@
 		F80F34192CC2D11E00F62B91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F80F341C2CC2D11E00F62B91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F80F34232CC2D37A00F62B91 /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level1.txt; path = Content/level1.txt; sourceTree = SOURCE_ROOT; };
-		F8514C5B2CC50F500035FE00 /* starExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = starExplosion.sks; path = "../../Project23 - Ninja/Content/starExplosion.sks"; sourceTree = "<group>"; };
-		F8514C5D2CC50F570035FE00 /* finishExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = finishExplosion.sks; path = "../../Project23 - Ninja/Content/finishExplosion.sks"; sourceTree = "<group>"; };
 		F8514C5F2CC53B3C0035FE00 /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level2.txt; path = Content/level2.txt; sourceTree = SOURCE_ROOT; };
 		F8514C602CC53B3C0035FE00 /* level3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level3.txt; path = Content/level3.txt; sourceTree = SOURCE_ROOT; };
+		F8514C632CC578160035FE00 /* starExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = starExplosion.sks; sourceTree = "<group>"; };
+		F8514C642CC578160035FE00 /* finishExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = finishExplosion.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +71,8 @@
 				F80F34122CC2D11B00F62B91 /* GameScene.swift */,
 				F80F34142CC2D11B00F62B91 /* GameViewController.swift */,
 				F80F340E2CC2D11B00F62B91 /* GameScene.sks */,
-				F8514C5B2CC50F500035FE00 /* starExplosion.sks */,
-				F8514C5D2CC50F570035FE00 /* finishExplosion.sks */,
+				F8514C642CC578160035FE00 /* finishExplosion.sks */,
+				F8514C632CC578160035FE00 /* starExplosion.sks */,
 				F80F34162CC2D11B00F62B91 /* Main.storyboard */,
 				F80F341B2CC2D11E00F62B91 /* LaunchScreen.storyboard */,
 				F80F34192CC2D11E00F62B91 /* Assets.xcassets */,
@@ -141,13 +141,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8514C5E2CC50F570035FE00 /* finishExplosion.sks in Resources */,
 				F80F340F2CC2D11B00F62B91 /* GameScene.sks in Resources */,
 				F8514C612CC53B3C0035FE00 /* level2.txt in Resources */,
+				F8514C662CC578160035FE00 /* finishExplosion.sks in Resources */,
 				F80F34182CC2D11B00F62B91 /* Base in Resources */,
+				F8514C652CC578160035FE00 /* starExplosion.sks in Resources */,
 				F8514C622CC53B3C0035FE00 /* level3.txt in Resources */,
 				F80F341A2CC2D11E00F62B91 /* Assets.xcassets in Resources */,
-				F8514C5C2CC50F500035FE00 /* starExplosion.sks in Resources */,
 				F80F34242CC2D37A00F62B91 /* level1.txt in Resources */,
 				F80F341D2CC2D11E00F62B91 /* Base in Resources */,
 			);
