@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate  {
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var redrawButton: UIButton!
@@ -17,8 +17,74 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPhoto))
+        let share = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(sharePhoto))
+        
+        navigationItem.rightBarButtonItems = [add, share]
+        
         drawRectangle()
     }
+    
+    
+    @objc func sharePhoto(){
+        if let image = imageView.image?.pngData() {
+            let vc = UIActivityViewController(activityItems:[image], applicationActivities: nil)
+            present(vc, animated: true)
+        }
+
+        
+    }
+    
+    @objc func addPhoto(){
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
+        
+    }
+    
+    //Picked image drawn to canvas and watermark added over it.
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let photo = info[.editedImage ] as? UIImage else {return}
+        
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 1028, height: 1028))
+        
+        let image = renderer.image{ctx in
+            
+            let rect = CGRect(x: 0, y: 0, width: 1028, height: 1028).insetBy(dx: 10, dy: 10)
+            
+            photo.draw(in: rect)
+            
+            
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            
+            let attributes : [NSAttributedString.Key: Any] = [
+                .font : UIFont.systemFont(ofSize: 60),
+                .foregroundColor : UIColor.black.withAlphaComponent(0.2),
+                .paragraphStyle : paragraphStyle
+            ]
+            
+            let string = "This picture has been watermarked!"
+            let attributedString = NSAttributedString(string: string, attributes: attributes)
+            var moveBy = 128
+            
+            for _ in 1...10 {
+
+                attributedString.draw(at: CGPoint(x: 64, y: moveBy))
+                moveBy += 128
+                
+            }
+
+        }
+        
+        imageView.image = image
+        
+        dismiss(animated: true)
+    }
+    
+    
+    
 
     @IBAction func redrawButtonTapped(_ sender: Any) {
         currentDrawType += 1
@@ -42,6 +108,8 @@ class ViewController: UIViewController {
             drawImagesAndText()
         case 6:
             drawEmoji()
+        case 7:
+            drawTWIN()
         default:
             break
         }
@@ -211,6 +279,7 @@ class ViewController: UIViewController {
             ctx.cgContext.setFillColor(UIColor.black.cgColor)
             ctx.cgContext.drawPath(using: .fillStroke)
             
+            //Create mouth
             ctx.cgContext.move(to: CGPoint(x: 216, y: 384))
             
             ctx.cgContext.addLine(to: CGPoint(x: 296, y: 384))
@@ -223,6 +292,49 @@ class ViewController: UIViewController {
         
         imageView.image = image
         
+    }
+    
+    func drawTWIN(){
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 1024, height: 1024))
+        
+        
+        
+        let image = renderer.image { ctx in
+    
+            ctx.cgContext.move(to: CGPoint(x: 206, y: 256))
+            //T
+            ctx.cgContext.addLine(to: CGPoint(x: 306, y: 256))
+            ctx.cgContext.move(to: CGPoint(x: 256, y: 256))
+            ctx.cgContext.addLine(to: CGPoint(x: 256, y: 356))
+            ctx.cgContext.move(to: CGPoint(x: 320, y: 256))
+            //W
+            ctx.cgContext.addLine(to: CGPoint(x: 352, y: 356))
+            ctx.cgContext.move(to: CGPoint(x: 352, y: 356))
+            ctx.cgContext.addLine(to: CGPoint(x: 384, y: 256))
+            ctx.cgContext.move(to: CGPoint(x: 384, y: 256))
+            ctx.cgContext.addLine(to: CGPoint(x: 416, y: 356))
+            ctx.cgContext.move(to: CGPoint(x: 416, y: 356))
+            ctx.cgContext.addLine(to: CGPoint(x: 448, y: 256))
+            //I
+            ctx.cgContext.move(to: CGPoint(x: 468, y: 256))
+            ctx.cgContext.addLine(to: CGPoint(x: 468, y: 356))
+            //N
+            ctx.cgContext.move(to: CGPoint(x: 488, y: 356))
+            ctx.cgContext.addLine(to: CGPoint(x: 488, y: 256))
+            ctx.cgContext.move(to: CGPoint(x: 488, y: 256))
+            ctx.cgContext.addLine(to: CGPoint(x: 545, y: 356))
+            ctx.cgContext.move(to: CGPoint(x: 545, y: 356))
+            ctx.cgContext.addLine(to: CGPoint(x: 545, y: 256))
+            
+            
+            ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
+            ctx.cgContext.setLineWidth(5)
+            ctx.cgContext.strokePath()
+            
+            
+        }
+        
+        imageView.image = image
     }
     
     
